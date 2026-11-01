@@ -1,0 +1,8 @@
+import pandas as pd
+
+# read the dataset pumpkins CVS file
+pumpkins = pd.read_csv('../data/US-pumpkins.csv')
+
+# filter out any rows that dont use price per bushel
+pumpkins = pumpkins[pumpkins['Package'].str.contains('bushel', case=True, regex=True)]
+pumpkins.head()
