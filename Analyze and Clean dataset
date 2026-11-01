@@ -15,3 +15,12 @@ new_columns = ['Package', 'Month', 'Low Price', 'High Price', 'Date']
 
 # drop all the other columns 
 pumpkins = pumpkins.drop([c for c in pumpkins.columns if c not in new_columns], axis=1)
+
+# Get an average between low and high price for the base pumpkin price
+price = (pumpkins['Low Price'] + pumpkins['High Price']) / 2
+
+# get the month from date column
+month = pd.DatetimeIndex(pumpkins['Date']).month
+
+# create a new date frame with these new columns
+new_pumpkins = pd.DataFrame({'Month': month, 'Package': pumpkins['Package'], 'Low Price': pumpkins['Low Price'],'High Price': pumpkins['High Price'], 'Price': price})
