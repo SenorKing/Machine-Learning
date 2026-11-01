@@ -9,3 +9,9 @@ pumpkins.head()
 
 # count how many empty cells in each column
 pumpkins.isnull().sum()
+
+# define cols we want to keep
+new_columns = ['Package', 'Month', 'Low Price', 'High Price', 'Date']
+
+# drop all the other columns 
+pumpkins = pumpkins.drop([c for c in pumpkins.columns if c not in new_columns], axis=1)
